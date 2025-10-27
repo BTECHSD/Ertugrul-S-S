@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Energie sparen leicht gemacht | Ertugrul Services</title>
+  <meta name="description" content="Praktische Tipps zum Energiesparen, einfach erklärt – für Privathaushalte und Unternehmen.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <script defer src="js-translations.js"></script>
+  <style>
+    /* Copy styles from index.html */
+    :root{--primary:#007B55;--accent:#00C7A9;--blue:#0057B7;--bg:#F7F9FA;--text:#333;--muted:#6b7280;--radius:20px}
+    html{scroll-behavior:smooth}
+    body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);margin:0}
+    header{background:var(--primary);color:#fff;padding:15px 40px;position:sticky;top:0;display:flex;gap:18px;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,.1);z-index:100}
+    .logo{display:flex;align-items:center}
+    .logo img{height:80px;margin-right:15px;border-radius:6px}
+    nav{display:flex;gap:22px;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-weight:600;position:relative;padding:6px 0}
+    nav a::after{content:'';display:block;height:2px;background:var(--accent);width:0;transition:width .3s;margin-top:5px}
+    nav a:hover{color:var(--accent)}
+    nav a:hover::after{width:100%}
+    .language-switcher{display:flex;gap:6px}
+    .language-switcher button{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:600}
+    .language-switcher button.active{background:#fff;color:var(--primary)}
+    .blog-hero{position:relative;text-align:center;padding:100px 20px;background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),var(--bg-img) center/cover;color:#fff}
+    .blog-hero h1{font-size:2.5rem;margin:0;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+    .blog-content{max-width:800px;margin:40px auto;padding:0 20px}
+    .blog-content h2{color:var(--blue);margin-top:40px}
+    .blog-content p{line-height:1.6}
+    .btn{background:var(--accent);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:background .3s,transform .2s;display:inline-block;text-decoration:none}
+    .btn:hover{background:var(--primary);transform:scale(1.03)}
+    footer{background:var(--primary);color:#fff;text-align:center;padding:20px}
+    @media(max-width:768px){
+      header{padding:10px 20px;flex-wrap:wrap}
+      nav{width:100%;justify-content:space-between;margin-top:10px}
+      .blog-hero h1{font-size:2rem}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="Logo/Ertugrul Service & Solution.jpg" alt="Logo"></a>
+    </div>
+    <nav>
+      <a href="index.html#services" data-i18n="menu_sales">Vertrieb</a>
+      <a href="index.html#energie" data-i18n="menu_energy">Energie</a>
+      <a href="index.html#kommunikation" data-i18n="menu_comm">Kommunikation</a>
+      <a href="index.html#pflege" data-i18n="menu_care">Pflege</a>
+      <a href="index.html#blog" data-i18n="menu_blog">Blog</a>
+      <a href="index.html#kontakt" data-i18n="menu_contact">Kontakt</a>
+    </nav>
+    <div class="language-switcher">
+      <button data-lang="de">🇩🇪</button>
+      <button data-lang="en">🇬🇧</button>
+      <button data-lang="tr">🇹🇷</button>
+    </div>
+  </header>
+
+  <section class="blog-hero">
+    <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1600&q=80" alt="Energieberatung Symbolbild">
+    <h1 data-i18n="blog1_title">Energie sparen leicht gemacht – Einfache Wege zur Kostensenkung</h1>
+  </section>
+
+  <section class="blog-content">
+    <h2 data-i18n="blog1_sec1">Warum Energieeffizienz wichtig ist</h2>
+    <p data-i18n="blog1_p1">Energieeffizienz ist längst nicht mehr nur ein Trend – sie ist ein entscheidender Faktor, um Kosten zu senken und gleichzeitig die Umwelt zu schützen...</p>
+
+    <h2 data-i18n="blog1_sec2">Stromverbrauch verstehen</h2>
+    <p data-i18n="blog1_p2">Wer seine Energie gezielt einsetzen möchte, sollte wissen, wo die größten Verbraucher liegen. Moderne Zähler und Apps helfen dabei...</p>
+
+    <h2 data-i18n="blog1_sec3">Praktische Spartipps</h2>
+    <p data-i18n="blog1_p3">Mit einfachen Maßnahmen lässt sich viel erreichen: effiziente Geräte, LED-Beleuchtung, bessere Dämmung und bewusstes Nutzungsverhalten...</p>
+
+    <h2 data-i18n="blog1_sec4">Professionelle Energieberatung</h2>
+    <p data-i18n="blog1_p4">Eine unabhängige Beratung kann Ihnen helfen, nicht nur kurzfristig zu sparen, sondern auch langfristig zu planen...</p>
+
+    <a href="index.html#blog" class="btn" data-i18n="back_to_blog">← Zurück zum Blog</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ertugrul Services & Solutions</p>
+  </footer>
+</body>
+</html>

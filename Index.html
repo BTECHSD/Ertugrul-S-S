@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ertugrul Services – Vertrieb, Kommunikation, Energie & Pflege</title>
+  <meta name="description" content="Ertugrul Services: Vertrieb & Promotion, Energieberatung, Kommunikationsdienstleistungen sowie Pflege- & Gesundheitsberatung in Ludwigshafen, Mannheim und deutschlandweit." />
+  <meta property="og:title" content="Ertugrul Services – Vertrieb, Energie, Kommunikation & Pflege" />
+  <meta property="og:description" content="Transparente Beratung, modernes Marketing und professionelle Pflegeexpertise. Deutsch · Englisch · Türkisch." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="Ertugrul Service & Solution.jpg" />
+  <meta name="theme-color" content="#007B55" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="Logo/Ertugrul Service & Solution.jpg">
+  <style>
+    :root{--primary:#007B55;--accent:#00C7A9;--blue:#0057B7;--bg:#F7F9FA;--text:#333;--muted:#6b7280;--radius:20px}
+    html{scroll-behavior:smooth}
+    body{font-family:'Open Sans',sans-serif;background:var(--bg);color:var(--text);margin:0}
+    /* Header */
+    header{background:var(--primary);color:#fff;padding:15px 40px;position:sticky;top:0;display:flex;gap:18px;justify-content:space-between;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,.1);z-index:100;transition:padding .3s}
+    .logo{display:flex;align-items:center}
+    .logo img{height:80px;margin-right:15px;border-radius:6px;transition:height .3s}
+    header.scrolled{padding:5px 30px}
+    header.scrolled .logo img{height:55px}
+    /* Lang Switcher */
+    .lang{display:flex;gap:6px;align-items:center}
+    .lang button{background:transparent;border:1px solid rgba(255,255,255,.6);color:#fff;border-radius:8px;padding:6px 10px;cursor:pointer;font-weight:600}
+    .lang button.active{background:#fff;color:var(--primary)}
+    /* Nav */
+    nav{display:flex;gap:22px;align-items:center}
+    nav a{color:#fff;text-decoration:none;font-weight:600;position:relative;padding:6px 0}
+    nav a::after{content:'';display:block;height:2px;background:var(--accent);width:0;transition:width .3s;margin-top:5px}
+    nav a:hover{color:var(--accent)}
+    nav a:hover::after, nav a.active::after{width:100%}
+    /* Mobile */
+    .hamburger{display:none;cursor:pointer;border:2px solid #fff;border-radius:8px;padding:6px 10px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0}
+    @media(max-width:1024px){
+      nav{display:none;position:absolute;right:20px;top:calc(100% + 10px);background:var(--primary);border-radius:12px;padding:12px 18px;flex-direction:column;gap:12px;box-shadow:0 10px 25px rgba(0,0,0,.15)}
+      nav.open{display:flex}
+      .hamburger{display:block}
+    }
+    /* Sections */
+    section{padding:80px 10%}
+    section:target{scroll-margin-top:120px}
+    h1,h2,h3{font-family:'Poppins',sans-serif;color:var(--blue)}
+    .muted{color:var(--muted)}
+    .btn{background:var(--accent);color:#fff;padding:12px 24px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:background .3s,transform .2s;display:inline-block}
+    .btn:hover{background:var(--primary);transform:scale(1.03)}
+    .hero{position:relative;text-align:center;background:url('https://images.unsplash.com/photo-1551836022-4c4c79ecde51?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;color:#fff;padding:150px 20px}
+    .hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45)}
+    .hero>*{position:relative;z-index:2}
+    .hero h1{font-size:3rem;color:#fff;text-shadow:0 3px 10px rgba(0,0,0,.3)}
+    .pill{display:inline-block;background:#E8F7F2;color:#065F46;padding:6px 10px;border-radius:9999px;font-size:.8rem;margin-right:8px}
+    /* Services Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    @media(max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:0 12px 28px rgba(0,0,0,.06);overflow:hidden;display:flex;flex-direction:column}
+    .card img{width:100%;height:200px;object-fit:cover}
+    .card .p{padding:22px}
+    .card h3{margin:0 0 8px}
+    .card .actions{padding:0 22px 22px}
+    /* Service blocks (legacy sections) */
+    .service{background:#fff;margin:40px 0;padding:40px;border-radius:var(--radius);box-shadow:0 4px 10px rgba(0,0,0,.05);display:flex;flex-wrap:wrap;align-items:center;gap:40px;transition:transform .3s}
+    .service:hover{transform:translateY(-5px)}
+    .service img{width:45%;border-radius:15px;box-shadow:0 2px 6px rgba(0,0,0,.1)}
+    .service div{flex:1;min-width:300px}
+    /* Testimonials */
+    .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media(max-width:1100px){.testi{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.testi{grid-template-columns:1fr}}
+    .quote{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+    .stars{color:#fbbf24;font-size:1.1rem}
+    /* Blog */
+    .blog{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    @media(max-width:1100px){.blog{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:720px){.blog{grid-template-columns:1fr}}
+    .post{background:#fff;border-radius:var(--radius);box-shadow:0 10px 24px rgba(0,0,0,.06);overflow:hidden}
+    .post img{width:100%;height:180px;object-fit:cover}
+    .post .p{padding:18px}
+    /* Footer */
+    footer{background:#0057B7;color:#fff;text-align:left;padding:40px 20px;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:20px}
+    @media(max-width:1024px){footer{grid-template-columns:1fr}}
+    .footer-logo img{height:60px;border-radius:6px}
+    .footer-contact{font-size:.95rem;line-height:1.6}
+    .footer-contact a{color:#fff;text-decoration:none}
+    .footer-contact a:hover{text-decoration:underline}
+    .social-icons img{width:30px;margin:0 10px;vertical-align:middle;opacity:.85;transition:opacity .3s,transform .3s}
+    .social-icons img:hover{opacity:1;transform:scale(1.08)}
+    .footer-legal a{color:#fff;text-decoration:none}
+    /* Back to top */
+    #backToTop{position:fixed;bottom:30px;right:30px;background:var(--accent);color:#fff;border:none;padding:12px 15px;border-radius:50%;cursor:pointer;display:none;box-shadow:0 4px 8px rgba(0,0,0,.2);transition:background .3s,transform .3s;z-index:200}
+    #backToTop:hover{background:var(--primary);transform:scale(1.1)}
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header aria-label="Hauptnavigation">
+    <div class="logo">
+      <a href="#home" aria-label="Zur Startseite"><img src="Logo/Ertugrul Service & Solution.jpg" alt="Ertugrul Services Logo"></a>
+    </div>
+    <div class="lang" role="group" aria-label="Sprachauswahl">
+      <button data-lang="de" class="active" aria-pressed="true">DE</button>
+      <button data-lang="en" aria-pressed="false">EN</button>
+      <button data-lang="tr" aria-pressed="false">TR</button>
+    </div>
+    <button class="hamburger" aria-label="Menü öffnen" aria-controls="mainnav" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav id="mainnav" role="navigation" aria-label="Primäre Navigation">
+      <a href="#services" data-i18n="nav.services">Leistungen</a>
+      <a href="#energie" data-i18n="nav.energy">Energieberatung</a>
+      <a href="#kommunikation" data-i18n="nav.comm">Kommunikation</a>
+      <a href="#pflege" data-i18n="nav.care">Pflege</a>
+      <a href="#blog" data-i18n="nav.blog">Blog</a>
+      <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1 data-i18n="hero.title">Professionelle Dienstleistungen mit Herz & Kompetenz</h1>
+    <p data-i18n="hero.subtitle">Ihr Partner für Vertrieb, Energie, Kommunikation & Pflege in Ludwigshafen & Umgebung</p>
+    <a class="btn" href="#kontakt" aria-label="Zum Kontaktbereich" data-i18n="hero.cta">Jetzt kontaktieren</a>
+    <div style="margin-top:16px">
+      <span class="pill">Deutsch</span>
+      <span class="pill">English</span>
+      <span class="pill">Türkçe</span>
+    </div>
+  </section>
+
+  <!-- Services Grid Overview -->
+  <section id="services">
+    <h2 data-i18n="services.title">Unsere Leistungen – klar, transparent, wirkungsvoll</h2>
+    <p class="muted" data-i18n="services.lead">Wir verbinden fundierte Pflege‑Expertise, starke Kommunikation und messbaren Vertrieb mit moderner Energieberatung.</p>
+    <div class="grid" style="margin-top:24px">
+      <article class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Vertrieb & Promotion"/>
+        <div class="p">
+          <h3 data-i18n="cards.sales.title">Vertrieb & Promotion</h3>
+          <p data-i18n="cards.sales.text">Strukturierte Neukundengewinnung, professionelle Produktpräsentationen, faire Abschlussführung – persönlich, telefonisch und digital. Wir bauen planbare Vertriebspipelines auf und stärken Ihre Marke an jedem Kontaktpunkt.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#kontakt" data-i18n="cards.cta">Anfragen</a>
+        </div>
+      </article>
+      <article class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=1200&q=80" alt="Energieberatung"/>
+        <div class="p">
+          <h3 data-i18n="cards.energy.title">Energieberatung</h3>
+          <p data-i18n="cards.energy.text">Unabhängige Tarifanalysen für Strom & Gas, Wechselservice, transparente Empfehlungen. Wir sichern faire Konditionen – nachhaltig und ohne versteckte Klauseln.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#kontakt" data-i18n="cards.cta">Anfragen</a>
+        </div>
+      </article>
+      <article class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=1200&q=80" alt="Kommunikation & Medien"/>
+        <div class="p">
+          <h3 data-i18n="cards.comm.title">Kommunikation & Medien</h3>
+          <p data-i18n="cards.comm.text">Social Media, Werbetexte, PR & Übersetzung (Deutsch · Englisch · Türkisch). Wir entwickeln klare Botschaften – vom Konzept bis zur messbaren Kampagne.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#kontakt" data-i18n="cards.cta">Anfragen</a>
+        </div>
+      </article>
+      <article class="card">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Pflege & Gesundheitsberatung"/>
+        <div class="p">
+          <h3 data-i18n="cards.care.title">Pflege & Gesundheitsberatung</h3>
+          <p data-i18n="cards.care.text">Beratung, Schulung und Unterstützung – mit Erfahrung aus Notaufnahme & Herz‑OP. Wir verbinden Fachlichkeit mit Empathie und alltagsnahen Lösungen.</p>
+        </div>
+        <div class="actions">
+          <a class="btn" href="#kontakt" data-i18n="cards.cta">Anfragen</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Legacy individual sections kept for deep-link anchors -->
+  <section id="energie" class="service" aria-labelledby="h-energie">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=1200&q=80" alt="Nachtstadt mit Energienetz">
+    <div>
+      <h2 id="h-energie" data-i18n="energy.title">Energieberatung – fair & unabhängig</h2>
+      <p data-i18n="energy.text">Wir prüfen bestehende Verträge, vergleichen neutral aktuelle Anbieter und übernehmen den Wechselservice. Dank transparenter Kommunikation wissen Sie jederzeit, welche Optionen sinnvoll sind – mit Fokus auf Preis, Service und Nachhaltigkeit.</p>
+    </div>
+  </section>
+
+  <section id="kommunikation" class="service" aria-labelledby="h-kommunikation">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=1200&q=80" alt="Teammeeting Marketing">
+    <div>
+      <h2 id="h-kommunikation" data-i18n="comm.title">Kommunikationsdienstleistungen – sichtbar & überzeugend</h2>
+      <p data-i18n="comm.text">Von Social‑Media‑Strategie bis Corporate Texts: Wir sorgen für konsistente Botschaften, die Menschen erreichen – auf Deutsch, Englisch und Türkisch. Dazu gehören Content‑Planung, Design, Community Management und Pressearbeit.</p>
+    </div>
+  </section>
+
+  <section id="pflege" class="service" aria-labelledby="h-pflege">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1200&q=80" alt="Pflegeberatung Gespräch">
+    <div>
+      <h2 id="h-pflege" data-i18n="care.title">Pflege & Gesundheitsberatung – fachlich & menschlich</h2>
+      <p data-i18n="care.text">Wir unterstützen Angehörige und Einrichtungen mit praxiserprobten Lösungen, Schulungen und Coaching. Die Kombination aus Notaufnahme- und Herz‑OP‑Erfahrung ermöglicht Beratung auf Augenhöhe – strukturiert, einfühlsam, wirksam.</p>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <h2 data-i18n="testi.title">Was Kundinnen & Kunden sagen</h2>
+    <div class="testi" style="margin-top:18px">
+      <div class="quote"><div class="stars">★★★★★</div><p data-i18n="testi.q1">„Schnelle, ehrliche Energieberatung. Wechsel in 10 Minuten erledigt – wir sparen deutlich.“</p><p class="muted">– M. Schneider, Mannheim</p></div>
+      <div class="quote"><div class="stars">★★★★★</div><p data-i18n="testi.q2">„Unsere Social‑Media‑Kanäle laufen endlich rund. Klare Strategie, saubere Umsetzung, top Kommunikation.“</p><p class="muted">– M. Kaya, Ludwigshafen</p></div>
+      <div class="quote"><div class="stars">★★★★★</div><p data-i18n="testi.q3">„Pflegeberatung mit Herz und Verstand. Die Schulung für Angehörige hat uns sehr geholfen.“</p><p class="muted">– M. Al‑Hassan, Heidelberg</p></div>
+    </div>
+    <div style="margin-top:24px">
+      <!-- Google Reviews Widget Platzhalter -->
+      <iframe title="Google Reviews" style="width:100%;height:360px;border:0;border-radius:12px" srcdoc="<html><body style='margin:0;font-family:Arial,sans-serif;display:flex;align-items:center;justify-content:center;color:#444'><div>Google‑Bewertungen Widget – füge hier später den Embed deiner Unternehmensseite ein.</div></body></html>"></iframe>
+    </div>
+  </section>
+
+  <!-- Blog -->
+  <section id="blog">
+    <h2 data-i18n="blog.title">Aktuelles & Tipps</h2>
+    <div class="blog" style="margin-top:18px">
+      <article class="post">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1553484771-371a605b060b?auto=format&fit=crop&w=1200&q=80" alt="Blog Energie">
+        <div class="p">
+          <h3 data-i18n="blog.p1.title">Strom & Gas: 5 Punkte, die beim Wechsel wirklich zählen</h3>
+          <p class="muted" data-i18n="blog.p1.text">Preis allein reicht nicht. Wir zeigen, worauf Sie achten sollten – von Laufzeiten bis Servicequalität – und wie Sie böse Überraschungen vermeiden.</p>
+          <a class="btn" href="blog1.html" data-i18n="blog.read">Weiterlesen</a>
+        </div>
+      </article>
+      <article class="post">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80" alt="Blog Kommunikation">
+        <div class="p">
+          <h3 data-i18n="blog.p2.title">Social Media für kleine Unternehmen: Was wirklich funktioniert</h3>
+          <p class="muted" data-i18n="blog.p2.text">Konzentrieren Sie sich auf klare Botschaften, konsistente Inhalte und einfache Funnels. So holen Sie mehr aus jedem Beitrag heraus.</p>
+          <a class="btn" href="blog2.html" data-i18n="blog.read">Weiterlesen</a>
+        </div>
+      </article>
+      <article class="post">
+        <img loading="lazy" src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=80" alt="Blog Pflege">
+        <div class="p">
+          <h3 data-i18n="blog.p3.title">Pflege zu Hause: 7 praxisnahe Tipps für Angehörige</h3>
+          <p class="muted" data-i18n="blog.p3.text">Von sicherer Umgebung bis Entlastungsangeboten: Diese Punkte helfen, Alltag und Pflege besser zu organisieren.</p>
+          <a class="btn" href="blog3.html" data-i18n="blog.read">Weiterlesen</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Kontakt & Formulare -->
+  <section id="kontakt" class="service" aria-labelledby="h-kontakt">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1516387938699-a93567ec168e?auto=format&fit=crop&w=1200&q=80" alt="Kontaktaufnahme">
+    <div>
+      <h2 id="h-kontakt" data-i18n="contact.title">Kontakt</h2>
+      <p>📞 <a href="tel:+491625813653">0162 581 3653</a></p>
+
+      <!-- Verbessertes Kontaktformular mit Formspree -->
+      <form id="contactForm" style="margin-top:16px" method="POST" action="https://formspree.io/f/xkgpoyzw" enctype="multipart/form-data">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <input required name="name" placeholder="Ihr Name" aria-label="Ihr Name" style="padding:10px;border-radius:8px;border:1px solid #ddd">
+          <input required name="email" type="email" placeholder="Ihre E-Mail" aria-label="Ihre E-Mail" style="padding:10px;border-radius:8px;border:1px solid #ddd">
+        </div>
+        <input name="phone" placeholder="Telefon (optional)" style="padding:10px;border-radius:8px;border:1px solid #ddd;width:100%;margin-top:12px">
+        <select name="topic" required style="padding:10px;border-radius:8px;border:1px solid #ddd;width:100%;margin-top:12px">
+          <option value="" disabled selected>Bitte Thema wählen</option>
+          <option>Vertrieb & Promotion</option>
+          <option>Energieberatung</option>
+          <option>Kommunikation & Medien</option>
+          <option>Pflege & Gesundheitsberatung</option>
+        </select>
+        <textarea required name="message" rows="4" placeholder="Ihre Nachricht" aria-label="Ihre Nachricht" style="padding:10px;border-radius:8px;border:1px solid #ddd;width:100%;margin-top:12px"></textarea>
+        <input type="file" name="attachment" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" style="margin-top:12px">
+        <small style="display:block;margin-top:4px;color:#666">Unterstützte Formate: PDF, JPEG, PNG, DOC(X). Max. 10 MB</small>
+        <button class="btn" type="submit" style="margin-top:12px" data-i18n="contact.send">Nachricht senden</button>
+        <small style="display:block;margin-top:6px;color:#666" data-i18n="contact.dsgvo">Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß Datenschutzerklärung zu.</small>
+        <p id="formStatus" class="muted" style="margin-top:8px"></p>
+        <!-- Debug / Visibility: optional, hidden by default -->
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+          <button type="button" id="toggleDebug" style="background:transparent;border:1px solid #ddd;padding:6px;border-radius:6px;cursor:pointer;font-size:.85rem">Debug anzeigen</button>
+          <small id="debugHint" style="color:#666;font-size:.85rem">(zeigt Server-Antwort für Fehlersuche)</small>
+        </div>
+        <div id="formDebug" style="display:none;margin-top:10px;background:#fff;border:1px solid #eee;padding:12px;border-radius:8px;max-height:240px;overflow:auto;font-family:monospace;font-size:.85rem;color:#111">
+          <pre id="formDebugText" style="white-space:pre-wrap;word-break:break-word;margin:0"></pre>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <div class="footer-logo"><img src="Logo/Ertugrul Service & Solution.jpg" alt="Ertugrul Services Logo"></div>
+      <div class="social-icons" aria-label="Social Links" style="margin-top:10px">
+        <a href="#" aria-label="Instagram"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram"></a>
+        <a href="#" aria-label="LinkedIn"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384014.png" alt="LinkedIn"></a>
+        <a href="#" aria-label="Facebook"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"></a>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <p><strong>Ertugrul Services & Solutions</strong></p>
+      <p>Wittelsbachstraße 47 · 67061 Ludwigshafen</p>
+      <p>📞 <a href="tel:+491625813653">+49 162 581 3653</a><br>✉️ <a href="mailto:fatihertugrul1992@gmail.com">fatihertugrul1992@gmail.com</a></p>
+      <p>USt-IdNr.: [falls vorhanden] · Gewerbeanmeldung: Ludwigshafen am Rhein</p>
+    </div>
+    <div class="footer-legal">
+      <p><a href="impressum.html">Impressum</a> | <a href="impressum.html#datenschutz">Datenschutzerklärung</a></p>
+      <details style="margin-top:10px"><summary>Cookies & Analytics (opt‑in)</summary>
+        <p>Wir verwenden optional Cookies/Analytics zur Verbesserung unseres Angebots. Sie können diese Funktion in den Browsereinstellungen deaktivieren.</p>
+      </details>
+    </div>
+  </footer>
+
+  <button id="backToTop" title="Nach oben" aria-label="Nach oben">⬆</button>
+
+  <script>
+    // Header, Back-to-Top, Active links
+    const headerEl = document.querySelector('header');
+    const backToTop = document.getElementById('backToTop');
+    const mainnav = document.getElementById('mainnav');
+    const burger = document.querySelector('.hamburger');
+    const navLinks = mainnav.querySelectorAll('a');
+    function onScroll(){
+      if(window.scrollY>50){headerEl.classList.add('scrolled');} else {headerEl.classList.remove('scrolled');}
+      if(window.scrollY>300){backToTop.style.display='block';} else {backToTop.style.display='none';}
+      const fromTop = window.scrollY + (headerEl.offsetHeight + 24);
+      navLinks.forEach(link=>{const sec=document.querySelector(link.getAttribute('href')); if(!sec) return; if(sec.offsetTop<=fromTop && (sec.offsetTop+sec.offsetHeight)>fromTop){link.classList.add('active');} else {link.classList.remove('active');}})
+    }
+    window.addEventListener('scroll', onScroll);
+    burger.addEventListener('click',()=>{const open=mainnav.classList.toggle('open'); burger.setAttribute('aria-expanded', open?'true':'false');});
+    navLinks.forEach(l=>l.addEventListener('click',()=>{ mainnav.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }));
+    backToTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+    // FORM Handling mit verbessertem Feedback
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    // Toggle debug panel
+    const toggleDebug = document.getElementById('toggleDebug');
+    const formDebug = document.getElementById('formDebug');
+    const formDebugText = document.getElementById('formDebugText');
+    toggleDebug.addEventListener('click', () => {
+      const shown = formDebug.style.display === 'block';
+      formDebug.style.display = shown ? 'none' : 'block';
+      toggleDebug.textContent = shown ? 'Debug anzeigen' : 'Debug verbergen';
+    });
+
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formStatus.style.color = 'inherit';
+      formStatus.textContent = 'Nachricht wird gesendet...';
+      formDebugText.textContent = '';
+
+      // Client-side validation
+      const name = (contactForm.querySelector('[name="name"]') || {}).value || '';
+      const email = (contactForm.querySelector('[name="email"]') || {}).value || '';
+      const topic = (contactForm.querySelector('[name="topic"]') || {}).value || '';
+      const message = (contactForm.querySelector('[name="message"]') || {}).value || '';
+
+      const emailRegex = /^\S+@\S+\.\S+$/;
+      if (!name.trim()) { formStatus.textContent = 'Bitte geben Sie Ihren Namen an.'; formStatus.style.color = '#d32f2f'; return; }
+      if (!emailRegex.test(email.trim())) { formStatus.textContent = 'Bitte geben Sie eine gültige E‑Mail‑Adresse an.'; formStatus.style.color = '#d32f2f'; return; }
+      if (!topic) { formStatus.textContent = 'Bitte wählen Sie ein Thema aus.'; formStatus.style.color = '#d32f2f'; return; }
+      if (message.trim().length < 10) { formStatus.textContent = 'Bitte geben Sie eine ausführlichere Nachricht ein (mind. 10 Zeichen).'; formStatus.style.color = '#d32f2f'; return; }
+
+      try {
+        const formData = new FormData(contactForm);
+        const endpoint = contactForm.action || '/';
+        console.log('Submitting contact form to:', endpoint);
+
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        console.log('Formspree response status:', response.status);
+
+        let respText = '';
+        try { const t = await response.text(); respText = t; } catch (e) { respText = '<no body>'; }
+        // show raw response in debug
+        formDebugText.textContent = `HTTP ${response.status}\n\n${respText}`;
+
+        if (response.ok) {
+          formStatus.textContent = 'Vielen Dank für Ihre Nachricht! Wir melden uns in Kürze bei Ihnen.';
+          contactForm.reset();
+          formStatus.style.color = '#007B55'; // Success color
+        } else {
+          console.error('Form submission failed:', response.status, respText);
+
+          // Try to parse JSON to detect specific error messages
+          let parsed = null;
+          try { parsed = JSON.parse(respText); } catch (e) { parsed = null; }
+
+          // Detect Formspree "File Uploads Not Permitted" error and auto-resubmit without file once
+          const fileError = (parsed && parsed.error && parsed.error.includes('File Uploads Not Permitted')) ||
+                            (parsed && parsed.errors && Array.isArray(parsed.errors) && parsed.errors.some(it => it.message && it.message.includes('File Uploads Not Permitted'))) ||
+                            (respText && respText.includes('File Uploads Not Permitted'));
+
+          if (fileError) {
+            // Remove any file inputs and resend once
+            if (!contactForm.dataset.resentWithoutFile) {
+              contactForm.dataset.resentWithoutFile = '1';
+              formStatus.textContent = 'Datei‑Upload wird vom Server nicht erlaubt. Nachricht wird ohne Anhang neu gesendet...';
+              console.warn('File uploads not permitted. Resubmitting without file.');
+
+              // create new FormData without file
+              const fd = new FormData();
+              for (const pair of new FormData(contactForm).entries()) {
+                if (pair[0] === 'attachment') continue; // skip file field
+                fd.append(pair[0], pair[1]);
+              }
+
+              const retryResp = await fetch(endpoint, { method: 'POST', body: fd, headers: { 'Accept': 'application/json' } });
+              const retryText = await retryResp.text().catch(()=>'<no body>');
+              formDebugText.textContent = `Retry HTTP ${retryResp.status}\n\n${retryText}`;
+              if (retryResp.ok) {
+                formStatus.textContent = 'Vielen Dank! Ihre Nachricht wurde ohne Anhang gesendet.';
+                contactForm.reset();
+                formStatus.style.color = '#007B55';
+              } else {
+                formStatus.textContent = 'Nachricht konnte nicht gesendet werden (auch ohne Anhang). Bitte prüfen Sie die Debug‑Info.';
+                formStatus.style.color = '#d32f2f';
+                formDebug.style.display = 'block'; toggleDebug.textContent = 'Debug verbergen';
+              }
+              return; // done
+            }
+          }
+
+          // Generic error fallback
+          formStatus.textContent = 'Entschuldigung, es gab ein Problem beim Senden. Bitte prüfen Sie die Debug‑Info.';
+          formStatus.style.color = '#d32f2f'; // Error color
+          // show debug panel on error
+          formDebug.style.display = 'block'; toggleDebug.textContent = 'Debug verbergen';
+        }
+      } catch (error) {
+        console.error('Form submission exception:', error);
+        formStatus.textContent = 'Netzwerkfehler: Nachricht konnte nicht gesendet werden. Bitte prüfen Sie Ihre Verbindung oder versuchen Sie es später.';
+        formStatus.style.color = '#d32f2f'; // Error color
+        formDebugText.textContent = String(error);
+        formDebug.style.display = 'block'; toggleDebug.textContent = 'Debug verbergen';
+      }
+    });
+
+    // I18N – einfache clientseitige Übersetzungen
+    const dict={
+      de:{
+        'nav.services':'Leistungen','nav.energy':'Energieberatung','nav.comm':'Kommunikation','nav.care':'Pflege','nav.blog':'Blog','nav.contact':'Kontakt',
+        'hero.title':'Professionelle Dienstleistungen mit Herz & Kompetenz','hero.subtitle':'Ihr Partner für Vertrieb, Energie, Kommunikation & Pflege in Ludwigshafen & Umgebung','hero.cta':'Jetzt kontaktieren',
+        'services.title':'Unsere Leistungen – klar, transparent, wirkungsvoll','services.lead':'Wir verbinden fundierte Pflege‑Expertise, starke Kommunikation und messbaren Vertrieb mit moderner Energieberatung.',
+        'cards.sales.title':'Vertrieb & Promotion','cards.sales.text':'Strukturierte Neukundengewinnung, professionelle Produktpräsentationen, faire Abschlussführung – persönlich, telefonisch und digital. Wir bauen planbare Vertriebspipelines auf und stärken Ihre Marke an jedem Kontaktpunkt.',
+        'cards.energy.title':'Energieberatung','cards.energy.text':'Unabhängige Tarifanalysen für Strom & Gas, Wechselservice, transparente Empfehlungen. Wir sichern faire Konditionen – nachhaltig und ohne versteckte Klauseln.',
+        'cards.comm.title':'Kommunikation & Medien','cards.comm.text':'Social Media, Werbetexte, PR & Übersetzung (Deutsch · Englisch · Türkisch). Wir entwickeln klare Botschaften – vom Konzept bis zur messbaren Kampagne.',
+        'cards.care.title':'Pflege & Gesundheitsberatung','cards.care.text':'Beratung, Schulung und Unterstützung – mit Erfahrung aus Notaufnahme & Herz‑OP. Wir verbinden Fachlichkeit mit Empathie und alltagsnahen Lösungen.',
+        'cards.cta':'Anfragen',
+        'energy.title':'Energieberatung – fair & unabhängig','energy.text':'Wir prüfen bestehende Verträge, vergleichen neutral aktuelle Anbieter und übernehmen den Wechselservice. Dank transparenter Kommunikation wissen Sie jederzeit, welche Optionen sinnvoll sind – mit Fokus auf Preis, Service und Nachhaltigkeit.',
+        'comm.title':'Kommunikationsdienstleistungen – sichtbar & überzeugend','comm.text':'Von Social‑Media‑Strategie bis Corporate Texts: Wir sorgen für konsistente Botschaften, die Menschen erreichen – auf Deutsch, Englisch und Türkisch. Dazu gehören Content‑Planung, Design, Community Management und Pressearbeit.',
+        'care.title':'Pflege & Gesundheitsberatung – fachlich & menschlich','care.text':'Wir unterstützen Angehörige und Einrichtungen mit praxiserprobten Lösungen, Schulungen und Coaching. Die Kombination aus Notaufnahme- und Herz‑OP‑Erfahrung ermöglicht Beratung auf Augenhöhe – strukturiert, einfühlsam, wirksam.',
+        'testi.title':'Was Kundinnen & Kunden sagen','testi.q1':'„Schnelle, ehrliche Energieberatung. Wechsel in 10 Minuten erledigt – wir sparen deutlich.“','testi.q2':'„Unsere Social‑Media‑Kanäle laufen endlich rund. Klare Strategie, saubere Umsetzung, top Kommunikation.“','testi.q3':'„Pflegeberatung mit Herz und Verstand. Die Schulung für Angehörige hat uns sehr geholfen.“',
+        'blog.title':'Aktuelles & Tipps','blog.p1.title':'Strom & Gas: 5 Punkte, die beim Wechsel wirklich zählen','blog.p1.text':'Preis allein reicht nicht. Wir zeigen, worauf Sie achten sollten – von Laufzeiten bis Servicequalität – und wie Sie böse Überraschungen vermeiden.','blog.p2.title':'Social Media für kleine Unternehmen: Was wirklich funktioniert','blog.p2.text':'Konzentrieren Sie sich auf klare Botschaften, konsistente Inhalte und einfache Funnels. So holen Sie mehr aus jedem Beitrag heraus.','blog.p3.title':'Pflege zu Hause: 7 praxisnahe Tipps für Angehörige','blog.p3.text':'Von sicherer Umgebung bis Entlastungsangeboten: Diese Punkte helfen, Alltag und Pflege besser zu organisieren.','blog.read':'Weiterlesen',
+        'contact.title':'Kontakt','contact.send':'Nachricht senden','contact.dsgvo':'Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß Datenschutzerklärung zu.',
+        'request.title':'Anfrage mit Datei‑Upload','request.send':'Anfrage senden','request.hint':'Max. 10 MB. Anhänge werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet.'
+      },
+      en:{
+        'nav.services':'Services','nav.energy':'Energy','nav.comm':'Communication','nav.care':'Care','nav.blog':'Blog','nav.contact':'Contact',
+        'hero.title':'Professional services with heart & expertise','hero.subtitle':'Your partner for Sales, Energy, Communication & Care in the Rhine‑Neckar region','hero.cta':'Contact now',
+        'services.title':'Our services – clear, transparent, effective','services.lead':'We combine proven care expertise, strong communication and measurable sales with modern energy consulting.',
+        'cards.sales.title':'Sales & Promotion','cards.sales.text':'Structured customer acquisition, professional product demos, fair closing – in person, by phone and online. We build predictable pipelines and strengthen your brand at every touchpoint.',
+        'cards.energy.title':'Energy Consulting','cards.energy.text':'Independent electricity & gas analysis, switching service, transparent recommendations. Fair conditions without hidden clauses.',
+        'cards.comm.title':'Communication & Media','cards.comm.text':'Social media, copywriting, PR & translation (German · English · Turkish). From concept to measurable campaign.',
+        'cards.care.title':'Care & Health Consulting','cards.care.text':'Advisory, training and support – backed by ER & cardiac surgery experience. Expertise meets empathy and practical solutions.',
+        'cards.cta':'Request',
+        'energy.title':'Energy consulting – fair & independent','energy.text':'We review contracts, compare providers neutrally and handle the switch. Transparent guidance focused on price, service and sustainability.',
+        'comm.title':'Communication services – visible & persuasive','comm.text':'From social strategy to corporate texts: consistent messaging that reaches people. Includes content planning, design, community mgmt and PR.',
+        'care.title':'Care & health consulting – expert & human','care.text':'We support families and institutions with hands‑on solutions, training and coaching. Practical, empathetic, effective.',
+        'testi.title':'What clients say','testi.q1':'“Fast, honest energy advice. Switched in 10 minutes – we truly save money.”','testi.q2':'“Our social channels finally run smoothly. Clear strategy, neat execution, great communication.”','testi.q3':'“Care consulting with heart and brains. The family training helped us a lot.”',
+        'blog.title':'News & Tips','blog.p1.title':'Electricity & gas: 5 things that really matter when switching','blog.p1.text':'Price is not everything. Here is what to check – from terms to service – and how to avoid pitfalls.','blog.p2.title':'Small business social media: what actually works','blog.p2.text':'Focus on clear messages, consistent content and simple funnels to get more from every post.','blog.p3.title':'Home care: 7 practical tips for families','blog.p3.text':'From safe environment to relief options – ways to organize everyday life and care better.','blog.read':'Read more',
+        'contact.title':'Contact','contact.send':'Send message','contact.dsgvo':'By submitting you agree to the processing of your data according to our privacy policy.',
+        'request.title':'Request with file upload','request.send':'Send request','request.hint':'Max. 10 MB. Attachments are used solely to process your request.'
+      },
+      tr:{
+        'nav.services':'Hizmetler','nav.energy':'Enerji','nav.comm':'İletişim','nav.care':'Bakım','nav.blog':'Blog','nav.contact':'İletişim',
+        'hero.title':'Kalpten ve uzmanlıkla profesyonel hizmetler','hero.subtitle':'Satış, Enerji, İletişim ve Bakım alanlarında güvenilir ortağınız','hero.cta':'Hemen iletişime geç',
+        'services.title':'Hizmetlerimiz – net, şeffaf, etkili','services.lead':'Sağlam bakım uzmanlığını, güçlü iletişimi ve ölçülebilir satışı modern enerji danışmanlığıyla birleştiriyoruz.',
+        'cards.sales.title':'Satış ve Tanıtım','cards.sales.text':'Yapılandırılmış müşteri kazanımı, profesyonel ürün sunumları, adil kapanış. Her temas noktasında markanızı güçlendiriyoruz.',
+        'cards.energy.title':'Enerji Danışmanlığı','cards.energy.text':'Elektrik & gaz tarif analizi, geçiş hizmeti, şeffaf öneriler. Gizli şartlar olmadan adil koşullar.',
+        'cards.comm.title':'İletişim ve Medya','cards.comm.text':'Sosyal medya, metin yazarlığı, PR ve çeviri (Almanca · İngilizce · Türkçe). Stratejiden ölçülebilir kampanyaya.',
+        'cards.care.title':'Bakım ve Sağlık Danışmanlığı','cards.care.text':'Acil servis ve kalp cerrahisi deneyimi ile danışmanlık, eğitim ve destek. Uzmanlık ve empati bir arada.',
+        'cards.cta':'Talep et',
+        'energy.title':'Enerji danışmanlığı – adil ve bağımsız','energy.text':'Mevcut sözleşmeleri inceliyor, sağlayıcıları tarafsız karşılaştırıyor ve geçiş işlemlerini üstleniyoruz. Fiyat, hizmet ve sürdürülebilirliğe odaklanıyoruz.',
+        'comm.title':'İletişim hizmetleri – görünür ve ikna edici','comm.text':'Sosyal stratejiden kurumsal metinlere: İnsanlara ulaşan tutarlı mesajlar. İçerik planlama, tasarım, topluluk yönetimi ve PR dahildir.',
+        'care.title':'Bakım ve sağlık danışmanlığı – uzman ve insani','care.text':'Ailelere ve kurumlara pratik çözümler, eğitim ve koçlukla destek oluyoruz. Uygulanabilir, empatik, etkili.',
+        'testi.title':'Müşteri yorumları','testi.q1':'“Hızlı ve dürüst enerji danışmanlığı. 10 dakikada geçiş – ciddi tasarruf sağladık.”','testi.q2':'“Sosyal kanallarımız sonunda düzenli. Net strateji, temiz uygulama, güçlü iletişim.”','testi.q3':'“Kalpten ve akıllı bakım danışmanlığı. Aile eğitimi bize çok yardımcı oldu.”',
+        'blog.title':'Güncel & İpuçları','blog.p1.title':'Elektrik & gaz: Geçişte gerçekten önemli 5 nokta','blog.p1.text':'Fiyat tek başına yeterli değil. Şartlardan hizmet kalitesine kadar nelere bakmanız gerektiğini anlatıyoruz.','blog.p2.title':'KOBİ’ler için sosyal medya: Gerçekten ne işe yarar','blog.p2.text':'Net mesajlar, tutarlı içerik ve basit hunilere odaklanın. Her paylaşımdan daha fazla verim alın.','blog.p3.title':'Evde bakım: Aileler için 7 pratik ipucu','blog.p3.text':'Güvenli ortamdan destek seçeneklerine: Günlük yaşamı ve bakımı daha iyi organize etmenin yolları.','blog.read':'Devamını oku',
+        'contact.title':'İletişim','contact.send':'Mesaj gönder','contact.dsgvo':'Göndererek verilerinizin gizlilik politikasına göre işlenmesini kabul edersiniz.',
+        'request.title':'Dosya yüklemeli talep formu','request.send':'Talebi gönder','request.hint':'Maks. 10 MB. Ekler yalnızca talebinizi işlemek için kullanılır.'
+      }
+    };
+    const langButtons=document.querySelectorAll('.lang button');
+    function setLang(l){
+      const entries=document.querySelectorAll('[data-i18n]');
+      entries.forEach(el=>{const key=el.getAttribute('data-i18n'); if(dict[l]&&dict[l][key]) el.textContent=dict[l][key];});
+      langButtons.forEach(b=>{b.classList.toggle('active', b.dataset.lang===l); b.setAttribute('aria-pressed', b.dataset.lang===l ? 'true':'false');});
+      localStorage.setItem('lang', l);
+    }
+    langButtons.forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+    setLang(localStorage.getItem('lang')||'de');
+  </script>
+</body>
+</html>
